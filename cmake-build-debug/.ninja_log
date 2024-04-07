@@ -1,0 +1,22 @@
+# ninja log v5
+1	378	7342260875009004	build.ninja	872c848ba34a0e66
+4	1230	7342248927664713	CMakeFiles/deanery_lib.dir/src/deanery.cpp.obj	f6dcd878516b6a8b
+5	2970	7342232603544612	CMakeFiles/Deanery.dir/src/main.cpp.obj	db87e59aa01f7390
+5	1328	7342214240902466	CMakeFiles/deanery_lib.dir/src/group.cpp.obj	32ec836eae5874b4
+1368	1520	7342248930553404	Deanery.exe	abdca1ff4d333ad
+11	494	7342193841042895	CMakeFiles/deanery_lib.dir/src/student.cpp.obj	3981c24ef9dc045d
+10	2976	7342232603615055	CMakeFiles/deanery_lib.dir/src/main.cpp.obj	58fc317efbce5986
+1230	1368	7342248929073466	libdeanery_lib.a	c34a5a7942ba32b1
+13	552	7342261045804448	CMakeFiles/deanery_lib.dir/src/student.cpp.obj	7c10208f4a1e1d81
+4	907	7342261049349906	CMakeFiles/deanery_lib.dir/src/group.cpp.obj	5d56aa2c333e41dd
+9	1024	7342261050537490	CMakeFiles/deanery_lib.dir/src/deanery.cpp.obj	7520fe9d4e419820
+22	2243	7342261062722746	CMakeFiles/Deanery.dir/src/main.cpp.obj	9782daf62fb16c0
+18	2283	7342261063123592	CMakeFiles/deanery_lib.dir/src/main.cpp.obj	480f644b3e1a6e21
+2283	2366	7342261063966699	libdeanery_lib.a	c34a5a7942ba32b1
+2366	2495	7342261065224404	Deanery.exe	abdca1ff4d333ad
+4	956	7342265193858824	CMakeFiles/deanery_lib.dir/src/deanery.cpp.obj	7520fe9d4e419820
+957	1032	7342265194619585	libdeanery_lib.a	c34a5a7942ba32b1
+1032	1149	7342265195753717	Deanery.exe	abdca1ff4d333ad
+5	1375	7342270065534232	CMakeFiles/deanery_lib.dir/src/deanery.cpp.obj	7520fe9d4e419820
+1376	1509	7342270066887433	libdeanery_lib.a	c34a5a7942ba32b1
+1510	1682	7342270068578799	Deanery.exe	abdca1ff4d333ad

@@ -1,0 +1,4 @@
+C:/Users/maxim/CLionProjects/deanery_noooo/deanery_my/cmake-build-debug/CMakeFiles/deanery_lib.dir
+C:/Users/maxim/CLionProjects/deanery_noooo/deanery_my/cmake-build-debug/CMakeFiles/Deanery.dir
+C:/Users/maxim/CLionProjects/deanery_noooo/deanery_my/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/maxim/CLionProjects/deanery_noooo/deanery_my/cmake-build-debug/CMakeFiles/rebuild_cache.dir
