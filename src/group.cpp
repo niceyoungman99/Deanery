@@ -93,3 +93,9 @@ string Group::GetTitle() {
 Group::~Group() {
     this->students_urls.clear();
 }
+
+string Group::getSpec() const {
+    std::string spec;
+    for (char ch : this->title) { if (!isdigit(ch)) spec += ch; }
+    return spec;
+}

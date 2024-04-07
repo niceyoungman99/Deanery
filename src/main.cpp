@@ -8,8 +8,8 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     setlocale(LC_ALL,"ru");
     Deanery deanary;
-    deanary.createGroups("C:\\Users\\maxim\\CLionProjects\\deanery_my\\groups.txt");
-    deanary.hireStudents("C:\\Users\\maxim\\CLionProjects\\deanery_my\\students.txt");
+    deanary.createGroups("C:\\Users\\maxim\\CLionProjects\\deanery_noooo\\deanery_my\\groups.txt");
+    deanary.hireStudents("C:\\Users\\maxim\\CLionProjects\\deanery_noooo\\deanery_my\\students.txt");
     deanary.getStatistics();
     deanary.addMarksToAll();
     deanary.addMarksToAll();
@@ -30,7 +30,7 @@ int main() {
     cout<<endl;
     cout<<endl;
     cout<<endl;
-    cout<<"Проверка информации о студентах после добавления студента"<<endl;
+    cout<<"Проверка информации о студентах после добавления студента и назначения его старостой"<<endl;
     deanary.getStatistics();
     deanary.saveStaff("save.txt");
     //cout<<deanary.GetGroup("23КНТ6")->isEmpty()<<endl;//проверка на пустоту группы
@@ -49,7 +49,7 @@ int main() {
     cout<<endl;
     cout<<endl;
     cout<<endl;
-    cout<<"Проверка информации о студентах после добавления студента"<<endl;
+    cout<<"Проверка информации о студентах после добавления студента и назначения его старостой"<<endl;
     deanary.getStatistics();
     deanary.saveStaff("save.txt");//this file is placed in cmake-build-debug
     Student st3(33,"Елесеева Ольга Романовна");

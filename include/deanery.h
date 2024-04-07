@@ -23,27 +23,27 @@ class Deanery {
 private:
     vector<Group *> groups;//вектор ссылок на группы
 public:
-    void hireStudents(const string &file1);
+    void hireStudents(const string &file1);//считывание студентов из файла
 
-    void createGroups(const string &file2);
+    void createGroups(const string &file2);//считывание групп из файлов
 
-    void moveStudents(Group &new2, vector<Student *>& moving_sts);
+    void moveStudents(Group &new2, vector<Student *>& moving_sts);//перемещение студентов
 
-    void addMarksToAll();
+    void addMarksToAll();//добавление рандомных оценок всем студентам
 
-    void Delete_St_Low_Mark(Student &st);
+    void Delete_St_Low_Mark(Student &st);//удаление студентов со средней оценкой меньше 3,5
 
-    void initHeads(Student &st);
+    void initHeads(Student &st);//инициализация старосты?? такая же функция есть у группы
 
-    void saveStaff(const std::string &newstfile);
+    void saveStaff(const std::string &newstfile);//сохранение информации в файл
 
-    void getStatistics();
+    void getStatistics();//вывод всей информации
 
-    Group *GetGroup(const string &ttl);
+    Group *GetGroup(const string &ttl);//выдача объекта группы по тайтлу
 
     ~Deanery();//destructor
     string fireStudents();//giving info and deleting students with low marks(<3.5)
-    bool FindGroup(const string f);
+    bool FindGroup(const string f);//проверка есть ли функция в векторе групп
 };
 
 #endif //DEANERY_MY_DEANERY_H

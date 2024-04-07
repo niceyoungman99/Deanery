@@ -32,7 +32,7 @@ void Deanery::hireStudents(const string &file1) {
         int id;
         while (getline(our_file, data)) {
             std::vector<std::string> info;
-            if(data!=""){
+            if(!data.empty()){
                 std::istringstream type(data);
                 while (type >> term) {
                     info.push_back(term);
@@ -60,7 +60,7 @@ void Deanery::hireStudents(const string &file1) {
                     }
                 }
                 if(quantity== false){
-                    cout<<"group not find in the list"<<endl;
+                    cout<<"Группы данного студента нет в файле"<<endl;
                 }
             }
             }
@@ -132,7 +132,7 @@ void Deanery::getStatistics() {
             return;
         }
         cout << "Название группы: " << groups[i]->GetTitle() << endl;
-        cout << "The speciality of all groups is Computer Science" << endl;
+        cout << "Специальность данной группы: " <<groups[i]->getSpec()<<endl;
         cout << "Количество студентов в данной группе: " << groups[i]->Get_Dostup_St_urls().size() << endl;
         cout << "Староста группы: " << groups[i]->Get_Fio_Head() << endl;
         cout << "Средняя оценка группы: " << groups[i]->getAveragemark() << endl;
@@ -158,7 +158,7 @@ string Deanery::fireStudents() {
     for (int i = 0; i < groups.size(); i++) {
         for (int j = groups[i]->Get_Dostup_St_urls().size() - 1; j >= 0; j--) {
             if (groups[i]->Get_Dostup_St_urls()[j]->getAveragemark() < 3.5) {
-                cout<<"Студент: " << groups[i]->Get_Dostup_St_urls()[j]->Get_fio() << " был отчислен за плохую успеваемость со средним баллом: "
+                cout<<"Студент: " << groups[i]->Get_Dostup_St_urls()[j]->Get_fio() << " был отчислен из группы "<<groups[i]->Get_Dostup_St_urls()[j]->RetGr()->GetTitle() <<" за плохую успеваемость со средним баллом: "
                        << groups[i]->Get_Dostup_St_urls()[j]->getAveragemark() << endl;
                 groups[i]->removeStudent(groups[i]->Get_Dostup_St_urls()[j]->Get_ID());
             }

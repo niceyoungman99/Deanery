@@ -20,6 +20,7 @@ public:
     Group(string &name);//initialization of group with only title
     Group();//
     ~Group();//destructor
+    string getSpec() const;
     void addStudent(Student &st);//adding student into group
     void chooseHead(Student &starosta);//choosing head of group
     Student *Find_student(string &f);//finding student in the group of his or her fio
