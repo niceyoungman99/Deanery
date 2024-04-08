@@ -33,7 +33,7 @@ public:
 
     void Delete_St_Low_Mark(Student &st);//удаление студентов со средней оценкой меньше 3,5
 
-    void initHeads(Student &st);//инициализация старосты?? такая же функция есть у группы
+    void initHeads(vector<int>ids);//инициализация старосты?? такая же функция есть у группы
 
     void saveStaff(const std::string &newstfile);//сохранение информации в файл
 

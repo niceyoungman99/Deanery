@@ -7,6 +7,7 @@
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     setlocale(LC_ALL,"ru");
+    srand(time(NULL));
     Deanery deanary;
     deanary.createGroups("C:\\Users\\maxim\\CLionProjects\\deanery_noooo\\deanery_my\\groups.txt");
     deanary.hireStudents("C:\\Users\\maxim\\CLionProjects\\deanery_noooo\\deanery_my\\students.txt");
@@ -38,14 +39,13 @@ int main() {
     Student st2(32,"Долгов Олег Васильевич");
     deanary.GetGroup("23КНТ4")->addStudent(st2);
     st2.addToGroup(deanary.GetGroup("23КНТ4"));
-    deanary.initHeads(st2);
+    deanary.GetGroup("23КНТ4")->chooseHead(st2);
     st2.addmark(3);
     st2.addmark(7);
     st2.addmark(10);
     //cout<<st2.isHeadOfGroup()<<endl;//проверка является ли студент
     //cout<<deanary.GetGroup("23КНТ6")->Get_Fio_Head()<<endl;//вывод ФИО старосты
     //cout<<deanary.GetGroup("23КНТ4")->Get_Fio_Head()<<endl;//вывод ФИО старосты
-    cout<<endl;
     cout<<endl;
     cout<<endl;
     cout<<endl;
@@ -113,5 +113,14 @@ int main() {
     cout<<"Проверка информации о студентах после удаления студента за неуспеваемость"<<endl;
     deanary.getStatistics();
     deanary.saveStaff("save.txt");
-
+    vector<int>candidates;
+    candidates.push_back(30);
+    candidates.push_back(11);
+    candidates.push_back(4);
+    deanary.initHeads(candidates);
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<"Проверка информации о студентах после назначения старост"<<endl;
+    deanary.getStatistics();
 }

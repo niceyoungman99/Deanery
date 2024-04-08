@@ -71,7 +71,7 @@ void Deanery::hireStudents(const string &file1) {
 }
 
 void Deanery::addMarksToAll() {
-    srand(time(NULL));
+
     for (Group* group : this->groups) {
         for (Student* student : group->Get_Dostup_St_urls()) {
             int x = rand() % (rand()% 11+1);
@@ -102,8 +102,16 @@ void Deanery::Delete_St_Low_Mark(Student &st) {
     }
 }
 
-void Deanery::initHeads(Student &st) {//what is this goal?
-    st.RetGr()->chooseHead(st);
+void Deanery::initHeads(vector<int>ids) {//what is this goal?
+    for(int i=0;i<ids.size();i++){
+        for(int j=0;j<groups.size();j++){
+            for(int k=0;k<groups[j]->Get_Dostup_St_urls().size();k++){
+                if(ids[i]==groups[j]->Get_Dostup_St_urls()[k]->Get_ID()){
+                    groups[j]->chooseHead(*groups[j]->Get_Dostup_St_urls()[k]);
+                }
+            }
+        }
+    }
 }
 
 void Deanery::saveStaff(const std::string &newstfile) {
