@@ -1,59 +1,71 @@
 #include "student.h"
 
-Student::Student(int id, std::string fio) {
-    this->id = id;
-    this->fio = fio;
-    this->group = nullptr;
+Student::Student(int id, const std::string &fio) {
+  this->id = id;
+  this->fio = fio;
+  this->group = nullptr;
 }
 
-int Student::Get_ID() const {
-    return id;
+int Student::GetID() const {
+  if (this == nullptr) {
+    return -1;//if no this student object
+  }
+  return id;
+}
+
+std::string Student::GetFIO() const {
+  if (this == nullptr) {
+    return "Нет такого студента в группе";
+  }
+  return fio;
+}
+
+void Student::AddMark(int mark) {
+  marks.push_back(mark);
+}
+
+void Student::AddToGroup(Group *g) {
+  group = g;
+}
+
+float Student::GetAverageMark() const {
+  if (this == nullptr) {
+    return -1;//if no this student object
+  }
+  float sum = 0.0;
+  for (int mark : marks) {
+    sum += mark;
+  }
+  return marks.size() > 0 ? sum / marks.size() : 0;
+}
+
+bool Student::IsHeadOfGroup() const {
+  if (this->group->GetHeadFio() == this->fio) {
+    return true;
+  } else {
+    return false;
+  }
 
 }
 
-string Student::Get_fio() const {
-    return this->fio;
+Group *Student::GetGroup() const {
+  if (this == nullptr) {
+    return nullptr;//if no this student object
+  }
+  return group;
 }
 
-void Student::addmark(int mark) {
-    this->marks.push_back(mark);
-}
-
-void Student::addToGroup(Group *g) {
-    this->group = g;
-    //cout << "Группа установлена студенту" << endl;
-}
-
-float Student::getAveragemark() {
-    float sum = 0;
-    float res;
-    for (int i = 0; i < this->marks.size(); i++) {
-        sum += this->marks[i];
-    }
-    res = sum / this->marks.size();
-    return res;
-}
-
-bool Student::isHeadOfGroup() {
-    if (this->group->Get_Fio_Head() == this->fio) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-Group *Student::RetGr() const {
-    return this->group;
-}
-
-string Student::Get_list_of_marks() {
-    string list;
-    for (int i = 0; i < this->marks.size(); i++) {
-        list = list + to_string(marks[i]) + " ";
-    }
-    return list;
+std::string Student::GetListOfMarks() const {
+  if (this == nullptr) {
+    return "no such student";//if no this student object
+  }
+  std::string list;
+  for (int mark : marks) {
+    list += std::to_string(mark) + " ";
+  }
+  return list;
 }
 
 Student::~Student() {
-    this->marks.clear();
+  marks.clear();
 }

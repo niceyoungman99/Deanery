@@ -1,33 +1,49 @@
 #ifndef DEANERY_MY_STUDENT_H
 #define DEANERY_MY_STUDENT_H
 
-#include "iostream"
-#include "string"
+#include <iostream>
+#include <string>
+#include <vector>
 #include "group.h"
-#include "vector"
-
-using namespace std;
-
-class Group;
+class Group; // Forward declaration
 
 class Student {
-private:
-    int id;//id of student
-    Group *group;//students`s group
-    string fio;//fio of student
-    vector<int> marks;//student`s marks
-public:
-    Student(int id, std::string fio);//initialization of student with 2 params
-    ~Student();//destructor
-    void addToGroup(Group *g);//todo: maybe it is not good(useful)  function
-    void addmark(int mark);//adding marks to student`s vector marks
-    float getAveragemark();//giving average value of student`s  marks(getter of average value of mark)
-    int Get_ID() const;//giving student`s id(getter of id)
-    string Get_fio() const;//giving student`s fio(getter of fio)
-    bool isHeadOfGroup();//checking if this student is the head of group
-    Group *RetGr() const;//giving ссылку on student`s group
-    string Get_list_of_marks();//giving student`s vector of marks in string format
+ public:
+  // Constructor
+  Student(int id, const std::string &fio);
 
+  // Destructor
+  ~Student();
+
+  // Add student to a group
+  void AddToGroup(Group *g);
+
+  // Add a mark to the student's list of marks
+  void AddMark(int mark);
+
+  // Get the average mark of the student
+  float GetAverageMark() const;
+
+  // Get student's ID
+  int GetID() const;
+
+  // Get student's full name (FIO)
+  std::string GetFIO() const;
+
+  // Check if this student is the head of the group
+  bool IsHeadOfGroup() const;
+
+  // Get a reference to the student's group
+  Group *GetGroup() const;
+
+  // Get the list of student's marks as a string
+  std::string GetListOfMarks() const;
+
+ private:
+  int id; // ID of the student
+  Group *group; // Student's group
+  std::string fio; // Full name (FIO) of the student
+  std::vector<int> marks; // Student's marks
 };
 
 #endif //DEANERY_MY_STUDENT_H

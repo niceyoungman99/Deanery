@@ -1,101 +1,115 @@
 #include "group.h"
 #include "deanery.h"
 
-Group::Group(std::string &name) {
-    this->title = name;
-    this->head = nullptr;
+#include <iostream>
+
+Group::Group(const std::string &name) : title(name), head(nullptr) {
 }
 
-void Group::addStudent(Student &st) {
-    this->students_urls.push_back(&st);
-    cout << "Студент "<<st.Get_fio()<<" добавлен в группу: "<< this->title<< endl;
+void Group::AddStudent(Student &st) {
+  studentsUrls.push_back(&st);
+  std::cout << "Студент " << st.GetFIO() << " добавлен в группу: " << title << std::endl;
 }
 
-void Group::chooseHead(Student &starosta) {// destroyed
-    this->head = &starosta;
-    //cout << "head was chosen" << endl;
+void Group::ChooseHead(Student &starosta) {
+  if (!ContainsStudent(starosta.GetFIO())) {
+    std::cout << "Студент из другой группы. Нельзя назначить старостой!" << std::endl;
+  }
+  else {
+    head = &starosta;
+    std::cout << "Студент: "<<starosta.GetFIO()<<" успешно назначен на роль старосты группы" << this->GetTitle() << std::endl;
+  }
+
 }
 
-
-
-Student *Group::Find_student(int i) {
-    for (int j = 0; j < students_urls.size(); j++) {
-        if (students_urls[j]->Get_ID() == i) {
-            return students_urls[j];
-        }
+Student *Group::FindStudent(int i) {
+  for (Student *student : studentsUrls) {
+    if (student->GetID() == i) {
+      return student;
     }
-    return nullptr;
+  }
+  return nullptr;
 }
 
-float Group::getAveragemark() {
-    if (students_urls.size() == 0) {
-        return 0;
+float Group::GetAverageMark() const {
+  if (this == nullptr) {
+    return -1;//if no this group object
+  }
+  if (studentsUrls.empty()) {
+    return 0;
+  }
+  float sum = 0;
+  for (Student *student : studentsUrls) {
+    sum += student->GetAverageMark();
+  }
+  return studentsUrls.size() > 0 ? sum / studentsUrls.size() : 0;
+}
+
+bool Group::ContainsStudent(const std::string &f) {
+  for (Student *student : studentsUrls) {
+    if (student->GetFIO() == f) {
+      return true;
     }
-    float sum = 0;
-    for (int i = 0; i < this->students_urls.size(); i++) {
-        sum += students_urls[i]->getAveragemark();
+  }
+  return false;
+}
+
+Group::Group() {
+}
+
+void Group::RemoveStudent(int ind) {
+  bool found = false;
+  for (size_t i = 0; i < studentsUrls.size(); i++) {
+    if (studentsUrls[i]->GetID() == ind) {
+      studentsUrls[i]->AddToGroup(nullptr);
+      if (head != nullptr && head->GetID() == ind) {
+        head = nullptr;
+      }
+      studentsUrls.erase(studentsUrls.begin() + i);
+      found = true;
     }
-    float res = sum / students_urls.size();
-    return res;
+  }
+  if (!found) {
+    std::cout << "Студента с данным id: " << ind << " нет в группе" << std::endl;
+  }
 }
 
-bool Group::Contains_Student(basic_string<char> f) {
-    for (int i = 0; i < students_urls.size(); i++) {
-        if (students_urls[i]->Get_fio() == f) {
-            return true;
-        }
-    }
-    return false;
+bool Group::IsEmpty() const {
+  return studentsUrls.empty();
 }
 
-Group::Group() {}
-
-void Group::removeStudent(int ind) {
-    bool flag = false;
-    for (int i = 0; i < students_urls.size(); i++) {
-        if (students_urls[i]->Get_ID() == ind) {
-            students_urls[i]->addToGroup(nullptr);
-            if (head!= NULL&&head->Get_ID() == ind) {
-                head = NULL;
-            }
-            students_urls.erase(students_urls.begin() + i);
-
-            flag = true;
-            //cout << "this student was removed" << endl;
-        }
-    }
-    if (flag == false) {
-        cout << "Данного студента нет в группе";
-
-    }
+std::string Group::GetHeadFio() const {
+  if (head != nullptr) {
+    return head->GetFIO();
+  } else {
+    return "Староста не выбран";
+  }
 }
 
-bool Group::isEmpty() {
-    if (students_urls.size() == 0) {
-        return true;
-    }
-    return false;
+std::vector<Student *> &Group::GetStudentUrls() {
+  return studentsUrls;
 }
 
-string Group::Get_Fio_Head() const {
-    if (head != nullptr) return head->Get_fio();
-    else return "Староста не выбран";
-}
-
-vector<Student *> Group::Get_Dostup_St_urls() {
-    return students_urls;
-}
-
-string Group::GetTitle() {
-    return this->title;
+std::string Group::GetTitle() const {
+  if (this == nullptr) {
+    return "Нет такого студента в группе";
+  }
+  return title;
 }
 
 Group::~Group() {
-    this->students_urls.clear();
+  studentsUrls.clear();
 }
 
-string Group::getSpec() const {
-    std::string spec;
-    for (char ch : this->title) { if (!isdigit(ch)) spec += ch; }
-    return spec;
+std::string Group::GetSpec() const {
+  if (this == nullptr) {
+    return "Нет такой группы";
+  }
+  std::string spec;
+  for (char ch : title) {
+    if (!isdigit(ch)) {
+      spec += ch;
+    }
+  }
+  return spec;
 }
